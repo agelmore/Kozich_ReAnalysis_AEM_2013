@@ -4,9 +4,9 @@
 
 
 # Download the raw data and put them into the data/raw directory
-curl -LO https://www.mothur.org/MiSeqDevelopmentData/StabilityWMetaG.tar
-tar xvf StabilityWMetaG.tar -C data/raw/
-rm StabilityWMetaG.tar
+curl -LO https://www.mothur.org/MiSeqDevelopmentData/StabilityNoMetaG.tar
+tar xvf StabilityNoMetaG.tar -C data/raw/
+rm StabilityNoMetaG.tar
 
 # Download the SILVA reference file (v.123). We will pull out the bacteria-specific sequences and
 # clean up the directories to remove the extra files
@@ -24,3 +24,24 @@ tar xvzf Trainset14_032015.pds.tgz trainset14_032015.pds/trainset14_032015.pds.*
 mv trainset14_032015.pds/* data/references/
 rmdir trainset14_032015.pds
 rm Trainset14_032015.pds.tgz
+
+# Generate a customized version of the SILVA reference database that targets the V4 region
+mothur "#pcr.seqs(fasta=data/references/silva.seed.align, start=11894, end=25319, keepdots=F, processors=8)"
+mv data/references/silva.seed.pcr.align data/references/silva.v4.align
+
+
+# Run mothur through the various quality control steps
+mothur code/get_good_seqs.batch
+
+
+# Run mock community data through mothur to calculate the sequencing error rates
+mothur code/get_error.batch
+
+
+mothur code/get_shared_otus.batch
+
+
+
+
+
+
