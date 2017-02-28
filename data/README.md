@@ -1,7 +1,9 @@
 ##Commands used to download data from Kozich et al. paper links
 
 Obtained the raw `fastq.gz` files from https://www.mothur.org/MiSeqDevelopmentData.html
+
 ​* Downloaded https://www.mothur.org/MiSeqDevelopmentData/StabilityNoMetaG.tar
+
 ​* Ran the following from the project's root directory
 ```bash
 curl -LO https://www.mothur.org/MiSeqDevelopmentData/StabilityNoMetaG.tar
