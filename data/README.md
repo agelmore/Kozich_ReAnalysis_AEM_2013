@@ -1,4 +1,16 @@
+##Commands used to download data from Kozich et al. paper links
+
+Obtained the raw `fastq.gz` files from https://www.mothur.org/MiSeqDevelopmentData.html
+​* Downloaded https://www.mothur.org/MiSeqDevelopmentData/StabilityNoMetaG.tar
+​* Ran the following from the project's root directory
+```bash
+curl -LO https://www.mothur.org/MiSeqDevelopmentData/StabilityNoMetaG.tar
+tar xvf StabilityNoMetaG.tar -C data/raw/
+rm StabilityNoMetaG.tar
+
+
 Downloaded the reference files from mothur
+
 
 Obtained the silva reference alignment from the mothur website:
 ```bash
